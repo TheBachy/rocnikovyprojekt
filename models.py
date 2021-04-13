@@ -9,10 +9,10 @@ from django.db import models
 
 
 class Players(models.Model):
-    id = models.AutoField(db_column='ID', primary_key=True)  # Field name made lowercase.
-    name = models.CharField(db_column='NAME', max_length=50)  # Field name made lowercase.
-    country = models.CharField(db_column='COUNTRY', max_length=100, blank=True, null=True)  # Field name made lowercase.
-    teams = models.ForeignKey('Teams', models.DO_NOTHING, db_column='teams_ID')  # Field name made lowercase.
+    id = models.AutoField(db_column='ID', primary_key=True)
+    name = models.CharField(db_column='NAME', max_length=50)
+    country = models.CharField(db_column='COUNTRY', max_length=100, blank=True, null=True)
+    teams = models.ForeignKey('Teams', models.DO_NOTHING, db_column='teams_ID')
 
     class Meta:
         managed = False
@@ -20,8 +20,8 @@ class Players(models.Model):
 
 
 class PlayersHasReplay(models.Model):
-    players = models.OneToOneField(Players, models.DO_NOTHING, db_column='players_ID', primary_key=True)  # Field name made lowercase.
-    replay = models.ForeignKey('Replay', models.DO_NOTHING, db_column='replay_ID')  # Field name made lowercase.
+    players = models.OneToOneField(Players, models.DO_NOTHING, db_column='players_ID', primary_key=True)
+    replay = models.ForeignKey('Replay', models.DO_NOTHING, db_column='replay_ID')
 
     class Meta:
         managed = False
@@ -30,10 +30,10 @@ class PlayersHasReplay(models.Model):
 
 
 class Replay(models.Model):
-    id = models.AutoField(db_column='ID', primary_key=True)  # Field name made lowercase.
-    name = models.CharField(db_column='NAME', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    date = models.DateField(db_column='DATE', blank=True, null=True)  # Field name made lowercase.
-    score = models.CharField(db_column='SCORE', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    id = models.AutoField(db_column='ID', primary_key=True)
+    name = models.CharField(db_column='NAME', max_length=45, blank=True, null=True)
+    date = models.DateField(db_column='DATE', blank=True, null=True)
+    score = models.CharField(db_column='SCORE', max_length=45, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -41,8 +41,8 @@ class Replay(models.Model):
 
 
 class ReplayHasTeams(models.Model):
-    replay = models.OneToOneField(Replay, models.DO_NOTHING, db_column='replay_ID', primary_key=True)  # Field name made lowercase.
-    teams = models.ForeignKey('Teams', models.DO_NOTHING, db_column='teams_ID')  # Field name made lowercase.
+    replay = models.OneToOneField(Replay, models.DO_NOTHING, db_column='replay_ID', primary_key=True)
+    teams = models.ForeignKey('Teams', models.DO_NOTHING, db_column='teams_ID')
 
     class Meta:
         managed = False
@@ -51,9 +51,9 @@ class ReplayHasTeams(models.Model):
 
 
 class Teams(models.Model):
-    id = models.AutoField(db_column='ID', primary_key=True)  # Field name made lowercase.
-    name = models.CharField(db_column='NAME', max_length=45)  # Field name made lowercase.
-    region = models.CharField(db_column='REGION', max_length=45)  # Field name made lowercase.
+    id = models.AutoField(db_column='ID', primary_key=True)
+    name = models.CharField(db_column='NAME', max_length=45)
+    region = models.CharField(db_column='REGION', max_length=45)
 
     class Meta:
         managed = False
